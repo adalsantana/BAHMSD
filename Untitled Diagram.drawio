@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-04-23T00:05:03.075Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36" etag="Zgy2PAyYlKelzn_HxW_t" version="14.6.6" type="github">
+<mxfile host="app.diagrams.net" modified="2021-04-23T00:23:40.793Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36" etag="AQtzelvE9747R0Hr86GE" version="14.6.6" type="github">
   <diagram id="xI42Ev8MugcT1kqLHyS6" name="Page-1">
     <mxGraphModel dx="2272" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -11,7 +11,7 @@
           <mxGeometry x="30" y="390" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="HP8echeqnm54RGg6QAfH-3" value="database" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
-          <mxGeometry x="340" y="650" width="60" height="80" as="geometry" />
+          <mxGeometry x="340" y="520" width="60" height="80" as="geometry" />
         </mxCell>
         <mxCell id="HP8echeqnm54RGg6QAfH-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0;entryDx=0;entryDy=52.5;entryPerimeter=0;" edge="1" parent="1" source="HP8echeqnm54RGg6QAfH-5" target="HP8echeqnm54RGg6QAfH-3">
           <mxGeometry relative="1" as="geometry" />
@@ -53,6 +53,9 @@
         </mxCell>
         <mxCell id="HP8echeqnm54RGg6QAfH-30" value="Register a user to an event" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="370" y="440" width="135" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="HP8echeqnm54RGg6QAfH-32" value="&lt;h1&gt;Backlog of tasks&lt;/h1&gt;&lt;div&gt;create database&amp;nbsp;&lt;/div&gt;&lt;div&gt;create customer object and define its fields&amp;nbsp;&lt;/div&gt;&lt;div&gt;create registration service to associate events to users&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;create event object and define its fields&lt;/div&gt;&lt;div&gt;create customer endpoints to CRUD operations on customer objects&lt;/div&gt;&lt;div&gt;implement authentication logic/service&lt;/div&gt;&lt;div&gt;create user/login registration service&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;creating customer API - two weeks making endpoints&lt;/div&gt;&lt;div&gt;creating an endpoint involves creating controller class -&amp;gt; service layer -&amp;gt; repo layer -&amp;gt; mapped to db&lt;/div&gt;&lt;div&gt;then create unit tests for the&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="30" y="610" width="560" height="350" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
