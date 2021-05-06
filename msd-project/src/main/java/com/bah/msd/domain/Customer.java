@@ -1,4 +1,4 @@
-package com.bah.msd.model;
+package com.bah.msd.domain;
 
 public class Customer {
 
