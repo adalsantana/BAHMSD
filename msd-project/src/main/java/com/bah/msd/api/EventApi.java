@@ -37,7 +37,7 @@ public class EventApi {
 	
 	@PostMapping
 	public ResponseEntity<?> addEvent(@RequestBody Event newEvent, UriComponentsBuilder uri) {
-		if(newEvent.getId()!=0 || newEvent.getName() == null || newEvent.getDate() == null || newEvent.getPrice() == null) {
+		if(newEvent.getId()!=0 || newEvent.getCode() == null || newEvent.getDescription() == null || newEvent.getTitle() == null) {
 			return ResponseEntity.badRequest().build();
 		}
 		
