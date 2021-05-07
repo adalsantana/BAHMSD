@@ -1,6 +1,7 @@
 package com.bah.msd.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,14 +11,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="")
+@Table(name="EVENTS")
 public class Event {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@ManyToOne
-	private Customer customer;
 	private String eventName;
 	private Date eventDate;
 	private Double eventPrice;
@@ -53,14 +52,6 @@ public class Event {
 
 	public void setPrice(Double price) {
 		this.eventPrice = price;
-	}
-
-	public Customer getCustomer() {
-		return customer;
-	}
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
 	}
 
 	
