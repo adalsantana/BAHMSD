@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,6 +36,11 @@ public class EventApi {
 		return repo.findById(id);
 	}
 	
+	//lookupEventByCode GET
+	@GetMapping("/bycode/{code}")
+	public Optional<Event> lookupCustomerByNameGet(@PathVariable("code") String code,
+		return repo.findByCode(code);
+	
 	@PostMapping
 	public ResponseEntity<?> addEvent(@RequestBody Event newEvent, UriComponentsBuilder uri) {
 		if(newEvent.getId()!=0 || newEvent.getCode() == null || newEvent.getDescription() == null || newEvent.getTitle() == null) {
@@ -48,5 +54,7 @@ public class EventApi {
 		
 		return response;
 	}
+	
+	@PutMapping
 
 }
