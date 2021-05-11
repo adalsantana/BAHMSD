@@ -23,9 +23,11 @@ public class RegisterAPI {
 
 	@PostMapping
 	public ResponseEntity<?> registerCustomer(@RequestBody Customer newCustomer, UriComponentsBuilder uri) {
-		//  Implementation here!
+		//  check customer fields for valid values
+		if(newCustomer.getId() != 0 || newCustomer.getName() == null || newCustomer.getEmail() == null) {
+			return ResponseEntity.badRequest().build();
+		}
 		return null;
 	}
-
 
 }
