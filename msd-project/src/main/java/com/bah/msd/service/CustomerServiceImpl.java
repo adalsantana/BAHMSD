@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import org.springframework.stereotype.Service;
 
-import com.bah.msd.model.Customer;
+import com.bah.msd.domain.Customer;
 
 @Service
 public class CustomerServiceImpl implements CustomerService{
