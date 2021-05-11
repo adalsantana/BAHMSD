@@ -2,10 +2,13 @@ package com.bah.msd.api;
 
 
 import java.net.URI;
+import java.util.Iterator;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,6 +39,26 @@ public class CustomerApi {
 		return repo.findById(id);
 	}
 	
+	@GetMapping("/customerName/{username}")
+	public ResponseEntity<?> getCustomerByName(@PathVariable("username") String username, UriComponentsBuilder uri){
+		Iterator<Customer> customers = repo.findAll().iterator();
+		while(customers.hasNext()) {
+			Customer customer = customers.next();
+			if(customer.getName().equalsIgnoreCase(username)) {
+				ResponseEntity<?> response = ResponseEntity.ok(customer);
+				return response;
+			}
+		}
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+	}
+	/*
+	 * doesn't post create a new customer object and put updates an existing one? Wouldn't i just add a new customer
+	 * to the end of the current list?
+	@PostMapping("/customerName")
+	public ResponseEntity<?> postCustomerByName(@RequestBody String username, UriComponentsBuilder uri){
+		
+	}
+	*/
 	@PostMapping
 	public ResponseEntity<?> addCustomer(@RequestBody Customer newCustomer, UriComponentsBuilder uri){
 		if (newCustomer.getId() != 0 || newCustomer.getName() == null || newCustomer.getEmail() == null) {
@@ -49,5 +72,12 @@ public class CustomerApi {
 		return response;
 	}
 	
+	
+	
+	@DeleteMapping("/{customerId}")
+	public ResponseEntity<?> deleteCustomerByID(@PathVariable("customerId") long id){
+		repo.deleteById(id);
+		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+	}
 	
  }
