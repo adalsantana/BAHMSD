@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +18,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import com.bah.msd.domain.Event;
 import com.bah.msd.repository.EventRepository;
-import com.bah.msd.service.EventService;
 
 @RestController
 @RequestMapping("/events")
@@ -38,8 +38,9 @@ public class EventApi {
 	
 	//lookupEventByCode GET
 	@GetMapping("/bycode/{code}")
-	public Optional<Event> lookupCustomerByNameGet(@PathVariable("code") String code,
+	public Event lookupEventByCodeGet(@PathVariable("code") String code){	
 		return repo.findByCode(code);
+	}
 	
 	@PostMapping
 	public ResponseEntity<?> addEvent(@RequestBody Event newEvent, UriComponentsBuilder uri) {
@@ -55,6 +56,27 @@ public class EventApi {
 		return response;
 	}
 	
-	@PutMapping
+	@PutMapping("/{eventId}")
+	public ResponseEntity<?> putCustomer(
+			@RequestBody Event newEvent,
+			@PathVariable("eventId") long eventId) 
+	{
+		
+		if (eventId < 0) {
+			return ResponseEntity.badRequest().build();
+		}
+		repo.save(newEvent);
+		ResponseEntity<?> response = ResponseEntity.ok(newEvent);
+		
+		return response;
+	}	
+	
+	@DeleteMapping("/{eventId}")
+	public ResponseEntity<?> deleteCustomerById(@PathVariable("eventId") long id) {
+		
+		repo.deleteById(id);
+		ResponseEntity<?> response = ResponseEntity.ok(null);
+		return response;
+	}
 
 }
