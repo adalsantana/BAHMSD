@@ -1,8 +1,13 @@
 package com.bah.msd.domain;
 
 import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 public class Customer {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int id;
 	@Column(name = "CUSTOMER_NAME")
 	String name;
