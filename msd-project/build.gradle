@@ -13,9 +13,12 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version:'2.1.8.RELEASE'
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version:'2.1.8.RELEASE'
+    compile group: 'org.hsqldb', name: 'hsqldb', version:'2.4.1'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version:'2.1.8.RELEASE'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 test {
