@@ -1,7 +1,10 @@
 package com.bah.msd.domain;
 
+import javax.persistence.Column;
+
 public class Customer {
 	int id;
+	@Column(name = "CUSTOMER_NAME")
 	String name;
 	String email;
 	String password;
