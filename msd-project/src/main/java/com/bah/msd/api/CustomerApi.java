@@ -53,9 +53,11 @@ public class CustomerApi {
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 	}
 	
-	@PutMapping
-	public ResponseEntity<?> putCustomer(@RequestBody Customer newCustomer, UriComponentsBuilder uri){
-		if(invalidCustomerCheck(newCustomer)) return ResponseEntity.badRequest().build();
+	@PutMapping("/{customerId}")
+	public ResponseEntity<?> putCustomer(@RequestBody Customer newCustomer, @PathVariable("customerId") long customerId){
+		if (newCustomer.getId() != 0 || newCustomer.getName() == null || newCustomer.getEmail() == null) {
+			return ResponseEntity.badRequest().build();
+		}
 		newCustomer = repo.save(newCustomer);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newCustomer.getId()).toUri();
 		ResponseEntity<?> response = ResponseEntity.created(location).build();
@@ -64,7 +66,7 @@ public class CustomerApi {
 	
 	@PostMapping
 	public ResponseEntity<?> addCustomer(@RequestBody Customer newCustomer, UriComponentsBuilder uri){
-		if (invalidCustomerCheck(newCustomer)) {
+		if (newCustomer.getId() != 0 || newCustomer.getName() == null || newCustomer.getEmail() == null){
 			// invalid customer fields
 			return ResponseEntity.badRequest().build();
 		}
@@ -82,12 +84,4 @@ public class CustomerApi {
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 	}
 	
-	//true means its invalid
-	private boolean invalidCustomerCheck(Customer newCustomer) {
-		if (newCustomer.getId() != 0 || newCustomer.getName() == null || newCustomer.getEmail() == null) {
-			return true;
-		}
-		else return false;
-		
-	}
  }
