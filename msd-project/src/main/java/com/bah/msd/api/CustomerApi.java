@@ -51,17 +51,10 @@ public class CustomerApi {
 		}
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 	}
-	/*
-	 * doesn't post create a new customer object and put updates an existing one? Wouldn't i just add a new customer
-	 * to the end of the current list?
-	@PostMapping("/customerName")
-	public ResponseEntity<?> postCustomerByName(@RequestBody String username, UriComponentsBuilder uri){
-		
-	}
-	*/
+	
 	@PostMapping
 	public ResponseEntity<?> addCustomer(@RequestBody Customer newCustomer, UriComponentsBuilder uri){
-		if (newCustomer.getId() != 0 || newCustomer.getName() == null || newCustomer.getEmail() == null) {
+		if (invalidCustomerCheck(newCustomer)) {
 			// invalid customer fields
 			return ResponseEntity.badRequest().build();
 		}
@@ -73,11 +66,18 @@ public class CustomerApi {
 	}
 	
 	
-	
 	@DeleteMapping("/{customerId}")
 	public ResponseEntity<?> deleteCustomerByID(@PathVariable("customerId") long id){
 		repo.deleteById(id);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 	}
 	
+	//true means its invalid
+	private boolean invalidCustomerCheck(Customer newCustomer) {
+		if (newCustomer.getId() != 0 || newCustomer.getName() == null || newCustomer.getEmail() == null) {
+			return true;
+		}
+		else return false;
+		
+	}
  }
