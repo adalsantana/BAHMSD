@@ -1,26 +1,21 @@
 package com.bah.msd.domain;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="")
+@Table(name="EVENTS")
 public class Event {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@ManyToOne
-	private Customer customer;
-	private String eventName;
-	private Date eventDate;
-	private Double eventPrice;
+	private String code;
+	private String title;
+	private String description;
 
 
 	public int getId() {
@@ -31,37 +26,31 @@ public class Event {
 		this.id = id;
 	}
 
-	public String getName() {
-		return eventName;
+	public String getCode() {
+		return code;
 	}
 
-	public void setName(String name) {
-		this.eventName = name;
+	public void setCode(String code) {
+		this.code = code;
 	}
 
-	public Date getDate() {
-		return eventDate;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setDate(Date date) {
-		this.eventDate = date;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public Double getPrice() {
-		return eventPrice;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setPrice(Double price) {
-		this.eventPrice = price;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public Customer getCustomer() {
-		return customer;
-	}
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
+	
 
 	
 }
