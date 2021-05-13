@@ -31,7 +31,7 @@ public class CustomerApi {
 	
 	
 	@GetMapping
-	public Iterable<Customer> getAllCustomers(){
+	public Iterable<Customer> getAll(){
 		return repo.findAll();
 	}
 	
@@ -40,8 +40,8 @@ public class CustomerApi {
 		return repo.findById(id);
 	}
 	
-	@GetMapping("/customerName/{username}")
-	public ResponseEntity<?> getCustomerByName(@PathVariable("username") String username){
+	@GetMapping("/name/{username}")
+	public ResponseEntity<?> getCustomerByName(@PathVariable("username") String username, UriComponentsBuilder uri){
 		Iterator<Customer> customers = repo.findAll().iterator();
 		while(customers.hasNext()) {
 			Customer customer = customers.next();

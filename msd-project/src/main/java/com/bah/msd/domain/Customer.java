@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class Customer {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	int id;
+	long id;
 	@Column(name="CUSTOMER_NAME")
 	String name;
 	String email;
@@ -21,7 +21,7 @@ public class Customer {
 	//default constructor
 	public Customer() {}
 	
-	public Customer(int id, String name, String email, String password) {
+	public Customer(long id, String name, String email, String password) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -29,10 +29,10 @@ public class Customer {
 		this.password = password;
 	}
 	
-	public int getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getName() {
