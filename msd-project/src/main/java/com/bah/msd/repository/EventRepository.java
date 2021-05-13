@@ -7,5 +7,6 @@ import com.bah.msd.domain.Event;
 public interface EventRepository extends CrudRepository<Event, Long>{
 	
 	Event findByCode(String code);
+	Event findByTitle(String code);
 
 }

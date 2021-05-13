@@ -42,6 +42,12 @@ public class EventApi {
 		return repo.findByCode(code);
 	}
 	
+	//lookupEventByCode GET
+	@GetMapping("/bytitle/{title}")
+	public Event lookupEventByTitleGet(@PathVariable("title") String title){	
+		return repo.findByTitle(title);
+	}
+	
 	@PostMapping
 	public ResponseEntity<?> addEvent(@RequestBody Event newEvent, UriComponentsBuilder uri) {
 		if(newEvent.getId()!=0 || newEvent.getCode() == null || newEvent.getDescription() == null || newEvent.getTitle() == null) {

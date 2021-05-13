@@ -1,6 +1,7 @@
 package com.bah.msd.domain;
 
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,20 +11,32 @@ import javax.persistence.Table;
 @Entity
 @Table(name="EVENTS")
 public class Event {
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	
+	@Column(name = "EVENT_CODE")
 	private String code;
 	private String title;
 	private String description;
+	
+	public Event() {}
+	
+	public Event(Long id, String code, String title, String description) {
+		super();
+		this.id = id;
+		this.code = code;
+		this.title = title;
+		this.description = description;
+	}
 
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
