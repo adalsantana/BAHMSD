@@ -30,6 +30,7 @@ public class RegisterAPI {
 		if(newCustomer.getId() != 0 || newCustomer.getName() == null || newCustomer.getEmail() == null) {
 			return ResponseEntity.badRequest().build();
 		}
+		//is this tied to the same repo utilized by customers?
 		repo.save(newCustomer);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(newCustomer.getId()).toUri();
