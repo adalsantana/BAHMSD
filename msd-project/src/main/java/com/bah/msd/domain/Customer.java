@@ -16,8 +16,7 @@ public class Customer {
 	Long id;
 	
 	@Column(name = "CUSTOMER_NAME")
-	String name;
-		
+	String name;	
 	String password;
 	String email;
 	
