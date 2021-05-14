@@ -3,6 +3,9 @@ package com.bah.msd.domain;
 import java.sql.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
@@ -12,6 +15,9 @@ public class Registration {
 	//
 	//  Implement Registration.  Your implementation is very likely going to change 
 	//  over time as you add functionality 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	long register_id;
 	long event_id;
 	long customer_id;
 	Date registration_date;
