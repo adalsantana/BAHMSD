@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "946d148e-5e9f-41c8-a802-2982c9c33861",
+		"_postman_id": "e7bd072f-d443-4747-978c-aee5e610c8d8",
 		"name": "Customer Data Service API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -25,7 +25,89 @@
 			"response": []
 		},
 		{
+			"name": "get all Events",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/events",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"events"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "get Customer by Name (GET)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/customers/byname/Paul",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customers",
+						"byname",
+						"Paul"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get Event by Code (GET)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/events/bycode/CNF001",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"events",
+						"bycode",
+						"CNF001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get Event by Title (GET)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/events/bytitle/All-Java",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"events",
+						"bytitle",
+						"All-Java"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get Event by Id (GET)",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -97,6 +179,37 @@
 			"response": []
 		},
 		{
+			"name": "create new Event",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\" : 0,\n    \"name\": \"Fox\",\n    \"password\": \"foxy\",\n    \"email\": \"fox@fox.com\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/api/customers/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customers",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "update customer",
 			"request": {
 				"method": "PUT",
@@ -128,7 +241,69 @@
 			"response": []
 		},
 		{
+			"name": "update Event",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 4,\n    \"name\": \"Fox\",\n    \"password\": \"foxyyy2\",\n    \"email\": \"fox@fox.com\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/api/customers/4",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customers",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "delete customer by Id",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/api/customers/4",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customers",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete event by Id",
 			"request": {
 				"method": "DELETE",
 				"header": [

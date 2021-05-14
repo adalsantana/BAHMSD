@@ -5,9 +5,11 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +18,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import com.bah.msd.domain.Event;
 import com.bah.msd.repository.EventRepository;
-import com.bah.msd.service.EventService;
 
 @RestController
 @RequestMapping("/events")
@@ -35,6 +36,18 @@ public class EventApi {
 		return repo.findById(id);
 	}
 	
+	//lookupEventByCode GET
+	@GetMapping("/bycode/{code}")
+	public Event lookupEventByCodeGet(@PathVariable("code") String code){	
+		return repo.findByCode(code);
+	}
+	
+	//lookupEventByCode GET
+	@GetMapping("/bytitle/{title}")
+	public Event lookupEventByTitleGet(@PathVariable("title") String title){	
+		return repo.findByTitle(title);
+	}
+	
 	@PostMapping
 	public ResponseEntity<?> addEvent(@RequestBody Event newEvent, UriComponentsBuilder uri) {
 		if(newEvent.getId()!=0 || newEvent.getCode() == null || newEvent.getDescription() == null || newEvent.getTitle() == null) {
@@ -46,6 +59,29 @@ public class EventApi {
 				.path("/id").buildAndExpand(newEvent.getId()).toUri();
 		ResponseEntity<?> response = ResponseEntity.created(location).build();
 		
+		return response;
+	}
+	
+	@PutMapping("/{eventId}")
+	public ResponseEntity<?> putCustomer(
+			@RequestBody Event newEvent,
+			@PathVariable("eventId") long eventId) 
+	{
+		
+		if (eventId < 0) {
+			return ResponseEntity.badRequest().build();
+		}
+		repo.save(newEvent);
+		ResponseEntity<?> response = ResponseEntity.ok(newEvent);
+		
+		return response;
+	}	
+	
+	@DeleteMapping("/{eventId}")
+	public ResponseEntity<?> deleteCustomerById(@PathVariable("eventId") long id) {
+		
+		repo.deleteById(id);
+		ResponseEntity<?> response = ResponseEntity.ok(null);
 		return response;
 	}
 
