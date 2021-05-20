@@ -2,6 +2,7 @@ package com.bah.msd.domain;
 
 
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,14 +14,15 @@ import javax.persistence.Table;
 public class Event {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	long id;
 	
-	private String code;
-	private String title;
-	private String description;
+	@Column(name="EVENT_CODE")
+    String code;
+	String title;
+	String description;
 
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 

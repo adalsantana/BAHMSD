@@ -63,14 +63,12 @@ public class EventApi {
 	}
 	
 	@PutMapping("/{eventId}")
-	public ResponseEntity<?> putCustomer(
-			@RequestBody Event newEvent,
-			@PathVariable("eventId") long eventId) 
-	{
+	public ResponseEntity<?> putCustomer(@RequestBody Event newEvent, @PathVariable("eventId") long eventId) {
 		
 		if (eventId < 0) {
 			return ResponseEntity.badRequest().build();
 		}
+		
 		repo.save(newEvent);
 		ResponseEntity<?> response = ResponseEntity.ok(newEvent);
 		

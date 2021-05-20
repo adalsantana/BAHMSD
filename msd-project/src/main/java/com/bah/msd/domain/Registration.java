@@ -1,7 +1,8 @@
 package com.bah.msd.domain;
 
-import java.sql.Date;
+import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,39 +12,42 @@ import javax.persistence.Table;
 @Entity
 @Table(name="REGISTRATIONS")
 public class Registration {
-	//  Workshop:
-	//
-	//  Implement Registration.  Your implementation is very likely going to change 
-	//  over time as you add functionality 
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	long register_id;
-	long event_id;
-	long customer_id;
-	Date registration_date;
-	String notes;
+	long id;
 	
-	public Registration(long event_id, long customer_id, Date registration_date, String notes) {
-		super();
-		this.event_id = event_id;
-		this.customer_id = customer_id;
-		this.registration_date = registration_date;
-		this.notes = notes;
+	@Column(name="EVENT_ID")
+	String event_id;
+	
+	@Column(name="CUSTOMER_ID")
+	String customer_id;
+	
+	Date registration_date;
+	
+	String notes;
+
+	public long getId() {
+		return id;
 	}
 
-	public long getEvent_id() {
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getEvent_id() {
 		return event_id;
 	}
 
-	public void setEvent_id(long event_id) {
+	public void setEvent_id(String event_id) {
 		this.event_id = event_id;
 	}
 
-	public long getCustomer_id() {
+	public String getCustomer_id() {
 		return customer_id;
 	}
 
-	public void setCustomer_id(long customer_id) {
+	public void setCustomer_id(String customer_id) {
 		this.customer_id = customer_id;
 	}
 
@@ -62,5 +66,7 @@ public class Registration {
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
+	
+	
 	
 }
